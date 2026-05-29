@@ -7,6 +7,7 @@
   <meta name="description" content="Delivery de chopp no Rio de Janeiro com chopeira, entrega e montagem inclusas. Barris de 30L e 50L a partir de R$ 490. Barra da Tijuca, Recreio, Jacarepagu&#225;. Pe&#231;a j&#225;!" />
   <meta name="keywords" content="delivery de chopp rio de janeiro, delivery de chopp rj, delivery chopp RJ, chopp delivery RJ, chopp RJ, aluguel de chopeira rio de janeiro, chopp para evento, chopp para festa, barril de chopp, chopp barra da tijuca, chopp recreio dos bandeirantes, chopp jacarepagu&#225;, chopp vargem pequena, chopp vargem grande, chopp guaratiba, chopp taquara, chopp freguesia, chopp itanh&#225;ng&#225;, chopp curicica, chopp camorim, chopp s&#227;o conrado, chopp brahma delivery, chopp donzela, aluguel de chopeira para festa, chopp gelado delivery" />
   <link rel="canonical" href="https://www.chopprio.com.br/" />
+  <meta name="google-site-verification" content="hCUFl8YxwzO5qFB3d4vh3Yab7eqYlCj0gugnYhIDE_k" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="author" content="Chopp Rio Express" />
   <meta name="geo.region" content="BR-RJ" />
@@ -281,7 +282,8 @@ box-shadow: 0 2px 0 var(--yellow), 4px 6px 24px rgba(255,189,2,0.12);
 .p-price { font-size: 2.5rem; font-weight: 900; color: var(--orange); margin: 4px 0 28px; letter-spacing: -0.02em; }
 .p-feats { list-style: none; display: flex; flex-direction: column; gap: 11px; }
 .p-feats li { display: flex; align-items: center; gap: 11px; font-size: 0.88rem; color: var(--muted); font-weight: 500; }
-.feat-dot { width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, var(--yellow), var(--orange)); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.feat-dot { width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, var(--yellow), var(--orange)); flex-shrink: 0; display: flex; align-items: center; justify-content: center; position: relative; }
+.feat-dot::after { content: ''; display: block; width: 6px; height: 10px; border: 2px solid #3d2800; border-top: none; border-left: none; transform: rotate(45deg) translateY(-2px); }
 .feat-dot svg { width: 11px; height: 11px; }
 .brands-row { text-align: center; border-top: 2px dashed rgba(255,189,2,0.35); padding-top: 48px; }
 .brands-label { font-size: 0.65rem; font-weight: 800; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
@@ -468,7 +470,7 @@ grid-template-columns: 1fr;
       <a href="#produtos" class="btn-ghost">Ver produtos</a>
     </div>
   </div>
-  <div class="hero-wave"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,80 C360,20 1080,20 1440,80 L1440,80 L0,80 Z" fill="#fffbf0"/><path d="M0,80 C360,40 1080,40 1440,80 L1440,80 L0,80 Z" fill="#ffffff" opacity="0.5"/></svg></div>
+  <div class="hero-wave"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" width="100%" height="80" xmlns="http://www.w3.org/2000/svg"><path d="M0,80 C360,20 1080,20 1440,80 L1440,80 L0,80 Z" fill="#fffbf0"/><path d="M0,80 C360,40 1080,40 1440,80 L1440,80 L0,80 Z" fill="#ffffff" opacity="0.5"/></svg></div>
 </section>
 
 <!-- PRODUTOS -->
@@ -488,10 +490,10 @@ grid-template-columns: 1fr;
         <div class="p-from">A partir de</div>
         <div class="p-price">R$ 490</div>
         <ul class="p-feats">
-          <li><span class="feat-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Chopeira inclusa</li>
-          <li><span class="feat-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Entrega e montagem</li>
-          <li><span class="feat-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ideal para 20 a 50 pessoas</li>
-          <li><span class="feat-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Suporte durante o evento</li>
+          <li><span class="feat-dot"></span>Chopeira inclusa</li>
+          <li><span class="feat-dot"></span>Entrega e montagem</li>
+          <li><span class="feat-dot"></span>Ideal para 20 a 50 pessoas</li>
+          <li><span class="feat-dot"></span>Suporte durante o evento</li>
         </ul>
       </div>
       <div class="p-card reveal">
@@ -502,10 +504,10 @@ grid-template-columns: 1fr;
         <div class="p-from">A partir de</div>
         <div class="p-price">R$ 650</div>
         <ul class="p-feats">
-          <li><span class="feat-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Chopeira inclusa</li>
-          <li><span class="feat-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Entrega e montagem</li>
-          <li><span class="feat-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ideal para 50 a 80 pessoas</li>
-          <li><span class="feat-dot"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Suporte durante o evento</li>
+          <li><span class="feat-dot"></span>Chopeira inclusa</li>
+          <li><span class="feat-dot"></span>Entrega e montagem</li>
+          <li><span class="feat-dot"></span>Ideal para 50 a 80 pessoas</li>
+          <li><span class="feat-dot"></span>Suporte durante o evento</li>
         </ul>
       </div>
     </div>
@@ -776,7 +778,10 @@ grid-template-columns: 1fr;
 <script>
 (function(){
   var c=document.getElementById('bubbles-canvas'),ctx=c.getContext('2d'),W,H,bs=[];
-  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
+  function resize(){
+    var r=c.parentElement.getBoundingClientRect();
+    W=c.width=r.width|0;H=c.height=r.height|0;
+  }
   function mkB(r){return{x:Math.random()*W,y:r?Math.random()*H:H+Math.random()*80,rad:4+Math.random()*18,spd:0.25+Math.random()*0.7,a:0.18+Math.random()*0.32,wb:Math.random()*Math.PI*2,ws:0.006+Math.random()*0.014};}
   function init(){resize();for(var i=0;i<100;i++)bs.push(mkB(true));}
   function loop(){
@@ -795,8 +800,10 @@ grid-template-columns: 1fr;
   window.addEventListener('resize',resize);init();loop();
 })();
 document.getElementById('ham').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
-var obs=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting)i.target.classList.add('visible');});},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(function(r){obs.observe(r);});
+window.addEventListener('load',function(){
+  var obs=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting)i.target.classList.add('visible');});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(r){obs.observe(r);});
+});
 </script>
 </body>
 </html>
