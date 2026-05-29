@@ -354,10 +354,10 @@ footer { background: var(--yellow); border-top: 2px solid var(--orange); padding
 .soc-wa svg { fill: var(--white); }
 .soc:hover svg { fill: var(--white); }
 .footer-btm { max-width: 1140px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.75rem; color: rgba(255,255,255,0.72); font-weight: 500; }
-.wpp-btn { position: fixed; bottom: 26px; right: 26px; z-index: 200; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.5); animation: wpp-pulse 2.5s ease-in-out infinite; transition: transform 0.2s; }
+.wpp-btn { position: fixed; bottom: 26px; right: 26px; z-index: 200; width: 58px; height: 58px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; text-decoration: none; will-change: transform; animation: wpp-pulse 2.5s ease-in-out infinite; transition: transform 0.2s; }
 .wpp-btn svg { width: 28px; height: 28px; fill: white; }
 .wpp-btn:hover { transform: scale(1.1); animation: none; }
-@keyframes wpp-pulse { 0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); } 50% { box-shadow: 0 4px 30px rgba(37,211,102,0.85), 0 0 0 10px rgba(37,211,102,0.09); } }
+@keyframes wpp-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -777,27 +777,29 @@ grid-template-columns: 1fr;
 
 <script>
 (function(){
-  var c=document.getElementById('bubbles-canvas'),ctx=c.getContext('2d'),W,H,bs=[];
-  function resize(){
-    var r=c.parentElement.getBoundingClientRect();
-    W=c.width=r.width|0;H=c.height=r.height|0;
-  }
-  function mkB(r){return{x:Math.random()*W,y:r?Math.random()*H:H+Math.random()*80,rad:4+Math.random()*18,spd:0.25+Math.random()*0.7,a:0.18+Math.random()*0.32,wb:Math.random()*Math.PI*2,ws:0.006+Math.random()*0.014};}
-  function init(){resize();for(var i=0;i<100;i++)bs.push(mkB(true));}
-  function loop(){
+  var c=document.getElementById('bubbles-canvas'),ctx=c.getContext('2d'),W,H,bs=[],last=0,paused=false;
+  function resize(){var r=c.parentElement.getBoundingClientRect();W=c.width=r.width|0;H=c.height=r.height|0;}
+  function mkB(r){return{x:Math.random()*W,y:r?Math.random()*H:H+Math.random()*80,rad:4+Math.random()*16,spd:0.2+Math.random()*0.6,a:0.15+Math.random()*0.28,wb:Math.random()*Math.PI*2,ws:0.005+Math.random()*0.012};}
+  function init(){resize();for(var i=0;i<70;i++)bs.push(mkB(true));}
+  function loop(ts){
+    if(paused){requestAnimationFrame(loop);return;}
+    if(ts-last<33){requestAnimationFrame(loop);return;}
+    last=ts;
     ctx.clearRect(0,0,W,H);
     for(var i=0;i<bs.length;i++){
       var b=bs[i];b.y-=b.spd;b.wb+=b.ws;
-      var xo=Math.sin(b.wb)*2.5;
+      var xo=Math.sin(b.wb)*2;
       ctx.beginPath();ctx.arc(b.x+xo,b.y,b.rad,0,Math.PI*2);
-      ctx.strokeStyle='rgba(255,255,255,'+b.a+')';ctx.lineWidth=1.2;ctx.stroke();
-      ctx.beginPath();ctx.arc(b.x+xo-b.rad*0.3,b.y-b.rad*0.3,b.rad*0.22,0,Math.PI*2);
-      ctx.fillStyle='rgba(255,255,255,'+(b.a*0.7)+')';ctx.fill();
+      ctx.strokeStyle='rgba(255,255,255,'+b.a+')';ctx.lineWidth=1;ctx.stroke();
+      ctx.beginPath();ctx.arc(b.x+xo-b.rad*0.28,b.y-b.rad*0.28,b.rad*0.2,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,'+(b.a*0.6)+')';ctx.fill();
       if(b.y+b.rad<0)bs[i]=mkB(false);
     }
     requestAnimationFrame(loop);
   }
-  window.addEventListener('resize',resize);init();loop();
+  document.addEventListener('visibilitychange',function(){paused=document.hidden;});
+  window.addEventListener('resize',resize);
+  init();requestAnimationFrame(loop);
 })();
 document.getElementById('ham').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
 window.addEventListener('load',function(){
